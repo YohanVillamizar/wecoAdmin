@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewOrderProductTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewOrderProductLabel_idOrderProduct}"/>
+                    <h:outputText value="#{orderProductController.selected.idOrderProduct}" title="#{bundle.ViewOrderProductTitle_idOrderProduct}"/>
+                    <h:outputText value="#{bundle.ViewOrderProductLabel_gainProduct}"/>
+                    <h:outputText value="#{orderProductController.selected.gainProduct}" title="#{bundle.ViewOrderProductTitle_gainProduct}"/>
+                    <h:outputText value="#{bundle.ViewOrderProductLabel_deliveryCost}"/>
+                    <h:outputText value="#{orderProductController.selected.deliveryCost}" title="#{bundle.ViewOrderProductTitle_deliveryCost}"/>
+                    <h:outputText value="#{bundle.ViewOrderProductLabel_californiaSalesTax}"/>
+                    <h:outputText value="#{orderProductController.selected.californiaSalesTax}" title="#{bundle.ViewOrderProductTitle_californiaSalesTax}"/>
+                    <h:outputText value="#{bundle.ViewOrderProductLabel_subTotal}"/>
+                    <h:outputText value="#{orderProductController.selected.subTotal}" title="#{bundle.ViewOrderProductTitle_subTotal}"/>
+                    <h:outputText value="#{bundle.ViewOrderProductLabel_total}"/>
+                    <h:outputText value="#{orderProductController.selected.total}" title="#{bundle.ViewOrderProductTitle_total}"/>
+                    <h:outputText value="#{bundle.ViewOrderProductLabel_dateOrder}"/>
+                    <h:outputText value="#{orderProductController.selected.dateOrder}" title="#{bundle.ViewOrderProductTitle_dateOrder}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewOrderProductLabel_hour}"/>
+                    <h:outputText value="#{orderProductController.selected.hour}" title="#{bundle.ViewOrderProductTitle_hour}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewOrderProductLabel_description}"/>
+                    <h:outputText value="#{orderProductController.selected.description}" title="#{bundle.ViewOrderProductTitle_description}"/>
+                    <h:outputText value="#{bundle.ViewOrderProductLabel_status}"/>
+                    <h:outputText value="#{orderProductController.selected.status}" title="#{bundle.ViewOrderProductTitle_status}"/>
+                    <h:outputText value="#{bundle.ViewOrderProductLabel_idUser}"/>
+                    <h:outputText value="#{orderProductController.selected.idUser}" title="#{bundle.ViewOrderProductTitle_idUser}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{orderProductController.destroyAndView}" value="#{bundle.ViewOrderProductDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewOrderProductEditLink}"/>
+                <br />
+                <h:commandLink action="#{orderProductController.prepareCreate}" value="#{bundle.ViewOrderProductCreateLink}" />
+                <br />
+                <h:commandLink action="#{orderProductController.prepareList}" value="#{bundle.ViewOrderProductShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewOrderProductIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

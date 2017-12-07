@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreatePackageServiceTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreatePackageServiceLabel_idKindService}" for="idKindService" />
+                    <h:inputText id="idKindService" value="#{packageServiceController.selected.idKindService}" title="#{bundle.CreatePackageServiceTitle_idKindService}" required="true" requiredMessage="#{bundle.CreatePackageServiceRequiredMessage_idKindService}"/>
+                    <h:outputLabel value="#{bundle.CreatePackageServiceLabel_name}" for="name" />
+                    <h:inputText id="name" value="#{packageServiceController.selected.name}" title="#{bundle.CreatePackageServiceTitle_name}" required="true" requiredMessage="#{bundle.CreatePackageServiceRequiredMessage_name}"/>
+                    <h:outputLabel value="#{bundle.CreatePackageServiceLabel_description}" for="description" />
+                    <h:inputText id="description" value="#{packageServiceController.selected.description}" title="#{bundle.CreatePackageServiceTitle_description}" required="true" requiredMessage="#{bundle.CreatePackageServiceRequiredMessage_description}"/>
+                    <h:outputLabel value="#{bundle.CreatePackageServiceLabel_status}" for="status" />
+                    <h:inputText id="status" value="#{packageServiceController.selected.status}" title="#{bundle.CreatePackageServiceTitle_status}" />
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{packageServiceController.create}" value="#{bundle.CreatePackageServiceSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{packageServiceController.prepareList}" value="#{bundle.CreatePackageServiceShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreatePackageServiceIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

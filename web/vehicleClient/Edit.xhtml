@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditVehicleClientTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditVehicleClientLabel_idVehicleClient}" for="idVehicleClient" />
+                    <h:inputText id="idVehicleClient" value="#{vehicleClientController.selected.idVehicleClient}" title="#{bundle.EditVehicleClientTitle_idVehicleClient}" required="true" requiredMessage="#{bundle.EditVehicleClientRequiredMessage_idVehicleClient}"/>
+                    <h:outputLabel value="#{bundle.EditVehicleClientLabel_description}" for="description" />
+                    <h:inputText id="description" value="#{vehicleClientController.selected.description}" title="#{bundle.EditVehicleClientTitle_description}" />
+                    <h:outputLabel value="#{bundle.EditVehicleClientLabel_status}" for="status" />
+                    <h:inputText id="status" value="#{vehicleClientController.selected.status}" title="#{bundle.EditVehicleClientTitle_status}" />
+                    <h:outputLabel value="#{bundle.EditVehicleClientLabel_idUser}" for="idUser" />
+                    <h:selectOneMenu id="idUser" value="#{vehicleClientController.selected.idUser}" title="#{bundle.EditVehicleClientTitle_idUser}" required="true" requiredMessage="#{bundle.EditVehicleClientRequiredMessage_idUser}">
+                        <f:selectItems value="#{userWecoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditVehicleClientLabel_idVehicle}" for="idVehicle" />
+                    <h:selectOneMenu id="idVehicle" value="#{vehicleClientController.selected.idVehicle}" title="#{bundle.EditVehicleClientTitle_idVehicle}" required="true" requiredMessage="#{bundle.EditVehicleClientRequiredMessage_idVehicle}">
+                        <f:selectItems value="#{vehicleController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{vehicleClientController.update}" value="#{bundle.EditVehicleClientSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditVehicleClientViewLink}"/>
+                <br />
+                <h:commandLink action="#{vehicleClientController.prepareList}" value="#{bundle.EditVehicleClientShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditVehicleClientIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditTechnicalSoportTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditTechnicalSoportLabel_idReport}" for="idReport" />
+                    <h:inputText id="idReport" value="#{technicalSoportController.selected.idReport}" title="#{bundle.EditTechnicalSoportTitle_idReport}" required="true" requiredMessage="#{bundle.EditTechnicalSoportRequiredMessage_idReport}"/>
+                    <h:outputLabel value="#{bundle.EditTechnicalSoportLabel_receiveDate}" for="receiveDate" />
+                    <h:inputText id="receiveDate" value="#{technicalSoportController.selected.receiveDate}" title="#{bundle.EditTechnicalSoportTitle_receiveDate}" required="true" requiredMessage="#{bundle.EditTechnicalSoportRequiredMessage_receiveDate}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditTechnicalSoportLabel_deliveryDate}" for="deliveryDate" />
+                    <h:inputText id="deliveryDate" value="#{technicalSoportController.selected.deliveryDate}" title="#{bundle.EditTechnicalSoportTitle_deliveryDate}" required="true" requiredMessage="#{bundle.EditTechnicalSoportRequiredMessage_deliveryDate}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditTechnicalSoportLabel_reason}" for="reason" />
+                    <h:inputText id="reason" value="#{technicalSoportController.selected.reason}" title="#{bundle.EditTechnicalSoportTitle_reason}" required="true" requiredMessage="#{bundle.EditTechnicalSoportRequiredMessage_reason}"/>
+                    <h:outputLabel value="#{bundle.EditTechnicalSoportLabel_solution}" for="solution" />
+                    <h:inputText id="solution" value="#{technicalSoportController.selected.solution}" title="#{bundle.EditTechnicalSoportTitle_solution}" required="true" requiredMessage="#{bundle.EditTechnicalSoportRequiredMessage_solution}"/>
+                    <h:outputLabel value="#{bundle.EditTechnicalSoportLabel_observations}" for="observations" />
+                    <h:inputText id="observations" value="#{technicalSoportController.selected.observations}" title="#{bundle.EditTechnicalSoportTitle_observations}" required="true" requiredMessage="#{bundle.EditTechnicalSoportRequiredMessage_observations}"/>
+                    <h:outputLabel value="#{bundle.EditTechnicalSoportLabel_status}" for="status" />
+                    <h:inputText id="status" value="#{technicalSoportController.selected.status}" title="#{bundle.EditTechnicalSoportTitle_status}" />
+                    <h:outputLabel value="#{bundle.EditTechnicalSoportLabel_idComplaint}" for="idComplaint" />
+                    <h:selectOneMenu id="idComplaint" value="#{technicalSoportController.selected.idComplaint}" title="#{bundle.EditTechnicalSoportTitle_idComplaint}" required="true" requiredMessage="#{bundle.EditTechnicalSoportRequiredMessage_idComplaint}">
+                        <f:selectItems value="#{complaintController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditTechnicalSoportLabel_idUser}" for="idUser" />
+                    <h:selectOneMenu id="idUser" value="#{technicalSoportController.selected.idUser}" title="#{bundle.EditTechnicalSoportTitle_idUser}" required="true" requiredMessage="#{bundle.EditTechnicalSoportRequiredMessage_idUser}">
+                        <f:selectItems value="#{userWecoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{technicalSoportController.update}" value="#{bundle.EditTechnicalSoportSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditTechnicalSoportViewLink}"/>
+                <br />
+                <h:commandLink action="#{technicalSoportController.prepareList}" value="#{bundle.EditTechnicalSoportShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditTechnicalSoportIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

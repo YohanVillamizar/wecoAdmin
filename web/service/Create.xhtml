@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateServiceTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateServiceLabel_idService}" for="idService" />
+                    <h:inputText id="idService" value="#{serviceController.selected.idService}" title="#{bundle.CreateServiceTitle_idService}" required="true" requiredMessage="#{bundle.CreateServiceRequiredMessage_idService}"/>
+                    <h:outputLabel value="#{bundle.CreateServiceLabel_name}" for="name" />
+                    <h:inputText id="name" value="#{serviceController.selected.name}" title="#{bundle.CreateServiceTitle_name}" required="true" requiredMessage="#{bundle.CreateServiceRequiredMessage_name}"/>
+                    <h:outputLabel value="#{bundle.CreateServiceLabel_serviceCost}" for="serviceCost" />
+                    <h:inputText id="serviceCost" value="#{serviceController.selected.serviceCost}" title="#{bundle.CreateServiceTitle_serviceCost}" />
+                    <h:outputLabel value="#{bundle.CreateServiceLabel_description}" for="description" />
+                    <h:inputText id="description" value="#{serviceController.selected.description}" title="#{bundle.CreateServiceTitle_description}" />
+                    <h:outputLabel value="#{bundle.CreateServiceLabel_status}" for="status" />
+                    <h:inputText id="status" value="#{serviceController.selected.status}" title="#{bundle.CreateServiceTitle_status}" />
+                    <h:outputLabel value="#{bundle.CreateServiceLabel_idKindService}" for="idKindService" />
+                    <h:selectOneMenu id="idKindService" value="#{serviceController.selected.idKindService}" title="#{bundle.CreateServiceTitle_idKindService}" required="true" requiredMessage="#{bundle.CreateServiceRequiredMessage_idKindService}">
+                        <f:selectItems value="#{packageServiceController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{serviceController.create}" value="#{bundle.CreateServiceSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{serviceController.prepareList}" value="#{bundle.CreateServiceShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateServiceIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

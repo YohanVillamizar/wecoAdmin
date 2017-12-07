@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewBuyServiceTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewBuyServiceLabel_idBuyService}"/>
+                    <h:outputText value="#{buyServiceController.selected.idBuyService}" title="#{bundle.ViewBuyServiceTitle_idBuyService}"/>
+                    <h:outputText value="#{bundle.ViewBuyServiceLabel_idPackage}"/>
+                    <h:outputText value="#{buyServiceController.selected.idPackage}" title="#{bundle.ViewBuyServiceTitle_idPackage}"/>
+                    <h:outputText value="#{bundle.ViewBuyServiceLabel_idSevice}"/>
+                    <h:outputText value="#{buyServiceController.selected.idSevice}" title="#{bundle.ViewBuyServiceTitle_idSevice}"/>
+                    <h:outputText value="#{bundle.ViewBuyServiceLabel_aditionalCost}"/>
+                    <h:outputText value="#{buyServiceController.selected.aditionalCost}" title="#{bundle.ViewBuyServiceTitle_aditionalCost}"/>
+                    <h:outputText value="#{bundle.ViewBuyServiceLabel_aditionalCostDescription}"/>
+                    <h:outputText value="#{buyServiceController.selected.aditionalCostDescription}" title="#{bundle.ViewBuyServiceTitle_aditionalCostDescription}"/>
+                    <h:outputText value="#{bundle.ViewBuyServiceLabel_photo}"/>
+                    <h:outputText value="#{buyServiceController.selected.photo}" title="#{bundle.ViewBuyServiceTitle_photo}"/>
+                    <h:outputText value="#{bundle.ViewBuyServiceLabel_serviceCost}"/>
+                    <h:outputText value="#{buyServiceController.selected.serviceCost}" title="#{bundle.ViewBuyServiceTitle_serviceCost}"/>
+                    <h:outputText value="#{bundle.ViewBuyServiceLabel_status}"/>
+                    <h:outputText value="#{buyServiceController.selected.status}" title="#{bundle.ViewBuyServiceTitle_status}"/>
+                    <h:outputText value="#{bundle.ViewBuyServiceLabel_idOrderService}"/>
+                    <h:outputText value="#{buyServiceController.selected.idOrderService}" title="#{bundle.ViewBuyServiceTitle_idOrderService}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{buyServiceController.destroyAndView}" value="#{bundle.ViewBuyServiceDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewBuyServiceEditLink}"/>
+                <br />
+                <h:commandLink action="#{buyServiceController.prepareCreate}" value="#{bundle.ViewBuyServiceCreateLink}" />
+                <br />
+                <h:commandLink action="#{buyServiceController.prepareList}" value="#{bundle.ViewBuyServiceShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewBuyServiceIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

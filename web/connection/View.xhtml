@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewConnectionTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewConnectionLabel_idConnection}"/>
+                    <h:outputText value="#{connectionController.selected.idConnection}" title="#{bundle.ViewConnectionTitle_idConnection}"/>
+                    <h:outputText value="#{bundle.ViewConnectionLabel_login}"/>
+                    <h:outputText value="#{connectionController.selected.login}" title="#{bundle.ViewConnectionTitle_login}"/>
+                    <h:outputText value="#{bundle.ViewConnectionLabel_password}"/>
+                    <h:outputText value="#{connectionController.selected.password}" title="#{bundle.ViewConnectionTitle_password}"/>
+                    <h:outputText value="#{bundle.ViewConnectionLabel_dateConnection}"/>
+                    <h:outputText value="#{connectionController.selected.dateConnection}" title="#{bundle.ViewConnectionTitle_dateConnection}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewConnectionLabel_key}"/>
+                    <h:outputText value="#{connectionController.selected.key}" title="#{bundle.ViewConnectionTitle_key}"/>
+                    <h:outputText value="#{bundle.ViewConnectionLabel_status}"/>
+                    <h:outputText value="#{connectionController.selected.status}" title="#{bundle.ViewConnectionTitle_status}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{connectionController.destroyAndView}" value="#{bundle.ViewConnectionDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewConnectionEditLink}"/>
+                <br />
+                <h:commandLink action="#{connectionController.prepareCreate}" value="#{bundle.ViewConnectionCreateLink}" />
+                <br />
+                <h:commandLink action="#{connectionController.prepareList}" value="#{bundle.ViewConnectionShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewConnectionIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

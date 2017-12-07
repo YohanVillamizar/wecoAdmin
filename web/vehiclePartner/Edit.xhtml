@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditVehiclePartnerTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditVehiclePartnerLabel_idVehiclePartner}" for="idVehiclePartner" />
+                    <h:inputText id="idVehiclePartner" value="#{vehiclePartnerController.selected.idVehiclePartner}" title="#{bundle.EditVehiclePartnerTitle_idVehiclePartner}" required="true" requiredMessage="#{bundle.EditVehiclePartnerRequiredMessage_idVehiclePartner}"/>
+                    <h:outputLabel value="#{bundle.EditVehiclePartnerLabel_insurance}" for="insurance" />
+                    <h:inputText id="insurance" value="#{vehiclePartnerController.selected.insurance}" title="#{bundle.EditVehiclePartnerTitle_insurance}" required="true" requiredMessage="#{bundle.EditVehiclePartnerRequiredMessage_insurance}"/>
+                    <h:outputLabel value="#{bundle.EditVehiclePartnerLabel_ownershipTittle}" for="ownershipTittle" />
+                    <h:inputText id="ownershipTittle" value="#{vehiclePartnerController.selected.ownershipTittle}" title="#{bundle.EditVehiclePartnerTitle_ownershipTittle}" required="true" requiredMessage="#{bundle.EditVehiclePartnerRequiredMessage_ownershipTittle}"/>
+                    <h:outputLabel value="#{bundle.EditVehiclePartnerLabel_registration}" for="registration" />
+                    <h:inputText id="registration" value="#{vehiclePartnerController.selected.registration}" title="#{bundle.EditVehiclePartnerTitle_registration}" required="true" requiredMessage="#{bundle.EditVehiclePartnerRequiredMessage_registration}"/>
+                    <h:outputLabel value="#{bundle.EditVehiclePartnerLabel_status}" for="status" />
+                    <h:inputText id="status" value="#{vehiclePartnerController.selected.status}" title="#{bundle.EditVehiclePartnerTitle_status}" />
+                    <h:outputLabel value="#{bundle.EditVehiclePartnerLabel_idUser}" for="idUser" />
+                    <h:selectOneMenu id="idUser" value="#{vehiclePartnerController.selected.idUser}" title="#{bundle.EditVehiclePartnerTitle_idUser}" required="true" requiredMessage="#{bundle.EditVehiclePartnerRequiredMessage_idUser}">
+                        <f:selectItems value="#{userWecoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditVehiclePartnerLabel_idVehicle}" for="idVehicle" />
+                    <h:selectOneMenu id="idVehicle" value="#{vehiclePartnerController.selected.idVehicle}" title="#{bundle.EditVehiclePartnerTitle_idVehicle}" required="true" requiredMessage="#{bundle.EditVehiclePartnerRequiredMessage_idVehicle}">
+                        <f:selectItems value="#{vehicleController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{vehiclePartnerController.update}" value="#{bundle.EditVehiclePartnerSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditVehiclePartnerViewLink}"/>
+                <br />
+                <h:commandLink action="#{vehiclePartnerController.prepareList}" value="#{bundle.EditVehiclePartnerShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditVehiclePartnerIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

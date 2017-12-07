@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListOrderProductTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListOrderProductEmpty}" rendered="#{orderProductController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{orderProductController.items.rowCount > 0}">
+                    <h:outputText value="#{orderProductController.pagination.pageFirstItem + 1}..#{orderProductController.pagination.pageLastItem + 1}/#{orderProductController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{orderProductController.previous}" value="#{bundle.Previous} #{orderProductController.pagination.pageSize}" rendered="#{orderProductController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{orderProductController.next}" value="#{bundle.Next} #{orderProductController.pagination.pageSize}" rendered="#{orderProductController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{orderProductController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListOrderProductTitle_idOrderProduct}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idOrderProduct}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListOrderProductTitle_gainProduct}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.gainProduct}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListOrderProductTitle_deliveryCost}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.deliveryCost}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListOrderProductTitle_californiaSalesTax}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.californiaSalesTax}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListOrderProductTitle_subTotal}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.subTotal}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListOrderProductTitle_total}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.total}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListOrderProductTitle_dateOrder}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dateOrder}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListOrderProductTitle_hour}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.hour}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListOrderProductTitle_description}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.description}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListOrderProductTitle_status}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.status}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListOrderProductTitle_idUser}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idUser}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{orderProductController.prepareView}" value="#{bundle.ListOrderProductViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{orderProductController.prepareEdit}" value="#{bundle.ListOrderProductEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{orderProductController.destroy}" value="#{bundle.ListOrderProductDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{orderProductController.prepareCreate}" value="#{bundle.ListOrderProductCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListOrderProductIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

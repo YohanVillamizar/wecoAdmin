@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListBuyServiceTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListBuyServiceEmpty}" rendered="#{buyServiceController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{buyServiceController.items.rowCount > 0}">
+                    <h:outputText value="#{buyServiceController.pagination.pageFirstItem + 1}..#{buyServiceController.pagination.pageLastItem + 1}/#{buyServiceController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{buyServiceController.previous}" value="#{bundle.Previous} #{buyServiceController.pagination.pageSize}" rendered="#{buyServiceController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{buyServiceController.next}" value="#{bundle.Next} #{buyServiceController.pagination.pageSize}" rendered="#{buyServiceController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{buyServiceController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBuyServiceTitle_idBuyService}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idBuyService}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBuyServiceTitle_idPackage}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idPackage}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBuyServiceTitle_idSevice}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idSevice}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBuyServiceTitle_aditionalCost}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.aditionalCost}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBuyServiceTitle_aditionalCostDescription}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.aditionalCostDescription}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBuyServiceTitle_photo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.photo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBuyServiceTitle_serviceCost}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.serviceCost}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBuyServiceTitle_status}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.status}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBuyServiceTitle_idOrderService}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idOrderService}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{buyServiceController.prepareView}" value="#{bundle.ListBuyServiceViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{buyServiceController.prepareEdit}" value="#{bundle.ListBuyServiceEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{buyServiceController.destroy}" value="#{bundle.ListBuyServiceDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{buyServiceController.prepareCreate}" value="#{bundle.ListBuyServiceCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListBuyServiceIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

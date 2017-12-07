@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateOrderServiceTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateOrderServiceLabel_idOrderService}" for="idOrderService" />
+                    <h:inputText id="idOrderService" value="#{orderServiceController.selected.idOrderService}" title="#{bundle.CreateOrderServiceTitle_idOrderService}" required="true" requiredMessage="#{bundle.CreateOrderServiceRequiredMessage_idOrderService}"/>
+                    <h:outputLabel value="#{bundle.CreateOrderServiceLabel_comissionService}" for="comissionService" />
+                    <h:inputText id="comissionService" value="#{orderServiceController.selected.comissionService}" title="#{bundle.CreateOrderServiceTitle_comissionService}" required="true" requiredMessage="#{bundle.CreateOrderServiceRequiredMessage_comissionService}"/>
+                    <h:outputLabel value="#{bundle.CreateOrderServiceLabel_tipService}" for="tipService" />
+                    <h:inputText id="tipService" value="#{orderServiceController.selected.tipService}" title="#{bundle.CreateOrderServiceTitle_tipService}" required="true" requiredMessage="#{bundle.CreateOrderServiceRequiredMessage_tipService}"/>
+                    <h:outputLabel value="#{bundle.CreateOrderServiceLabel_dateOrder}" for="dateOrder" />
+                    <h:inputText id="dateOrder" value="#{orderServiceController.selected.dateOrder}" title="#{bundle.CreateOrderServiceTitle_dateOrder}" required="true" requiredMessage="#{bundle.CreateOrderServiceRequiredMessage_dateOrder}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateOrderServiceLabel_total}" for="total" />
+                    <h:inputText id="total" value="#{orderServiceController.selected.total}" title="#{bundle.CreateOrderServiceTitle_total}" required="true" requiredMessage="#{bundle.CreateOrderServiceRequiredMessage_total}"/>
+                    <h:outputLabel value="#{bundle.CreateOrderServiceLabel_startDate}" for="startDate" />
+                    <h:inputText id="startDate" value="#{orderServiceController.selected.startDate}" title="#{bundle.CreateOrderServiceTitle_startDate}" required="true" requiredMessage="#{bundle.CreateOrderServiceRequiredMessage_startDate}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateOrderServiceLabel_endDate}" for="endDate" />
+                    <h:inputText id="endDate" value="#{orderServiceController.selected.endDate}" title="#{bundle.CreateOrderServiceTitle_endDate}" required="true" requiredMessage="#{bundle.CreateOrderServiceRequiredMessage_endDate}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateOrderServiceLabel_startHour}" for="startHour" />
+                    <h:inputText id="startHour" value="#{orderServiceController.selected.startHour}" title="#{bundle.CreateOrderServiceTitle_startHour}" required="true" requiredMessage="#{bundle.CreateOrderServiceRequiredMessage_startHour}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateOrderServiceLabel_endHour}" for="endHour" />
+                    <h:inputText id="endHour" value="#{orderServiceController.selected.endHour}" title="#{bundle.CreateOrderServiceTitle_endHour}" required="true" requiredMessage="#{bundle.CreateOrderServiceRequiredMessage_endHour}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateOrderServiceLabel_wecoFee}" for="wecoFee" />
+                    <h:inputText id="wecoFee" value="#{orderServiceController.selected.wecoFee}" title="#{bundle.CreateOrderServiceTitle_wecoFee}" />
+                    <h:outputLabel value="#{bundle.CreateOrderServiceLabel_comissionFee}" for="comissionFee" />
+                    <h:inputText id="comissionFee" value="#{orderServiceController.selected.comissionFee}" title="#{bundle.CreateOrderServiceTitle_comissionFee}" />
+                    <h:outputLabel value="#{bundle.CreateOrderServiceLabel_gainPartner}" for="gainPartner" />
+                    <h:inputText id="gainPartner" value="#{orderServiceController.selected.gainPartner}" title="#{bundle.CreateOrderServiceTitle_gainPartner}" />
+                    <h:outputLabel value="#{bundle.CreateOrderServiceLabel_status}" for="status" />
+                    <h:inputText id="status" value="#{orderServiceController.selected.status}" title="#{bundle.CreateOrderServiceTitle_status}" />
+                    <h:outputLabel value="#{bundle.CreateOrderServiceLabel_idLocation}" for="idLocation" />
+                    <h:selectOneMenu id="idLocation" value="#{orderServiceController.selected.idLocation}" title="#{bundle.CreateOrderServiceTitle_idLocation}" required="true" requiredMessage="#{bundle.CreateOrderServiceRequiredMessage_idLocation}">
+                        <f:selectItems value="#{locationController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateOrderServiceLabel_idVehicleClient}" for="idVehicleClient" />
+                    <h:selectOneMenu id="idVehicleClient" value="#{orderServiceController.selected.idVehicleClient}" title="#{bundle.CreateOrderServiceTitle_idVehicleClient}" required="true" requiredMessage="#{bundle.CreateOrderServiceRequiredMessage_idVehicleClient}">
+                        <f:selectItems value="#{vehicleClientController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateOrderServiceLabel_idVehiclePartner}" for="idVehiclePartner" />
+                    <h:selectOneMenu id="idVehiclePartner" value="#{orderServiceController.selected.idVehiclePartner}" title="#{bundle.CreateOrderServiceTitle_idVehiclePartner}" required="true" requiredMessage="#{bundle.CreateOrderServiceRequiredMessage_idVehiclePartner}">
+                        <f:selectItems value="#{vehiclePartnerController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{orderServiceController.create}" value="#{bundle.CreateOrderServiceSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{orderServiceController.prepareList}" value="#{bundle.CreateOrderServiceShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateOrderServiceIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

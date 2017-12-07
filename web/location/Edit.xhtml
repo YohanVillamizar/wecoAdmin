@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditLocationTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditLocationLabel_idLocation}" for="idLocation" />
+                    <h:inputText id="idLocation" value="#{locationController.selected.idLocation}" title="#{bundle.EditLocationTitle_idLocation}" required="true" requiredMessage="#{bundle.EditLocationRequiredMessage_idLocation}"/>
+                    <h:outputLabel value="#{bundle.EditLocationLabel_name}" for="name" />
+                    <h:inputText id="name" value="#{locationController.selected.name}" title="#{bundle.EditLocationTitle_name}" required="true" requiredMessage="#{bundle.EditLocationRequiredMessage_name}"/>
+                    <h:outputLabel value="#{bundle.EditLocationLabel_latitude}" for="latitude" />
+                    <h:inputText id="latitude" value="#{locationController.selected.latitude}" title="#{bundle.EditLocationTitle_latitude}" required="true" requiredMessage="#{bundle.EditLocationRequiredMessage_latitude}"/>
+                    <h:outputLabel value="#{bundle.EditLocationLabel_longitude}" for="longitude" />
+                    <h:inputText id="longitude" value="#{locationController.selected.longitude}" title="#{bundle.EditLocationTitle_longitude}" required="true" requiredMessage="#{bundle.EditLocationRequiredMessage_longitude}"/>
+                    <h:outputLabel value="#{bundle.EditLocationLabel_direction}" for="direction" />
+                    <h:inputText id="direction" value="#{locationController.selected.direction}" title="#{bundle.EditLocationTitle_direction}" required="true" requiredMessage="#{bundle.EditLocationRequiredMessage_direction}"/>
+                    <h:outputLabel value="#{bundle.EditLocationLabel_zipcode}" for="zipcode" />
+                    <h:inputText id="zipcode" value="#{locationController.selected.zipcode}" title="#{bundle.EditLocationTitle_zipcode}" required="true" requiredMessage="#{bundle.EditLocationRequiredMessage_zipcode}"/>
+                    <h:outputLabel value="#{bundle.EditLocationLabel_status}" for="status" />
+                    <h:inputText id="status" value="#{locationController.selected.status}" title="#{bundle.EditLocationTitle_status}" />
+                    <h:outputLabel value="#{bundle.EditLocationLabel_idCity}" for="idCity" />
+                    <h:selectOneMenu id="idCity" value="#{locationController.selected.idCity}" title="#{bundle.EditLocationTitle_idCity}" required="true" requiredMessage="#{bundle.EditLocationRequiredMessage_idCity}">
+                        <f:selectItems value="#{cityController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{locationController.update}" value="#{bundle.EditLocationSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditLocationViewLink}"/>
+                <br />
+                <h:commandLink action="#{locationController.prepareList}" value="#{bundle.EditLocationShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditLocationIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

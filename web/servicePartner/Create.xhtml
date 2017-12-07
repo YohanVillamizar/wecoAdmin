@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateServicePartnerTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateServicePartnerLabel_idServicePartner}" for="idServicePartner" />
+                    <h:inputText id="idServicePartner" value="#{servicePartnerController.selected.idServicePartner}" title="#{bundle.CreateServicePartnerTitle_idServicePartner}" required="true" requiredMessage="#{bundle.CreateServicePartnerRequiredMessage_idServicePartner}"/>
+                    <h:outputLabel value="#{bundle.CreateServicePartnerLabel_description}" for="description" />
+                    <h:inputText id="description" value="#{servicePartnerController.selected.description}" title="#{bundle.CreateServicePartnerTitle_description}" required="true" requiredMessage="#{bundle.CreateServicePartnerRequiredMessage_description}"/>
+                    <h:outputLabel value="#{bundle.CreateServicePartnerLabel_costServicePartner}" for="costServicePartner" />
+                    <h:inputText id="costServicePartner" value="#{servicePartnerController.selected.costServicePartner}" title="#{bundle.CreateServicePartnerTitle_costServicePartner}" required="true" requiredMessage="#{bundle.CreateServicePartnerRequiredMessage_costServicePartner}"/>
+                    <h:outputLabel value="#{bundle.CreateServicePartnerLabel_status}" for="status" />
+                    <h:inputText id="status" value="#{servicePartnerController.selected.status}" title="#{bundle.CreateServicePartnerTitle_status}" />
+                    <h:outputLabel value="#{bundle.CreateServicePartnerLabel_idService}" for="idService" />
+                    <h:selectOneMenu id="idService" value="#{servicePartnerController.selected.idService}" title="#{bundle.CreateServicePartnerTitle_idService}" required="true" requiredMessage="#{bundle.CreateServicePartnerRequiredMessage_idService}">
+                        <f:selectItems value="#{serviceController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateServicePartnerLabel_idUser}" for="idUser" />
+                    <h:selectOneMenu id="idUser" value="#{servicePartnerController.selected.idUser}" title="#{bundle.CreateServicePartnerTitle_idUser}" required="true" requiredMessage="#{bundle.CreateServicePartnerRequiredMessage_idUser}">
+                        <f:selectItems value="#{userWecoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{servicePartnerController.create}" value="#{bundle.CreateServicePartnerSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{servicePartnerController.prepareList}" value="#{bundle.CreateServicePartnerShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateServicePartnerIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

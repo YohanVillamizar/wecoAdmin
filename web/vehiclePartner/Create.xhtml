@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateVehiclePartnerTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateVehiclePartnerLabel_idVehiclePartner}" for="idVehiclePartner" />
+                    <h:inputText id="idVehiclePartner" value="#{vehiclePartnerController.selected.idVehiclePartner}" title="#{bundle.CreateVehiclePartnerTitle_idVehiclePartner}" required="true" requiredMessage="#{bundle.CreateVehiclePartnerRequiredMessage_idVehiclePartner}"/>
+                    <h:outputLabel value="#{bundle.CreateVehiclePartnerLabel_insurance}" for="insurance" />
+                    <h:inputText id="insurance" value="#{vehiclePartnerController.selected.insurance}" title="#{bundle.CreateVehiclePartnerTitle_insurance}" required="true" requiredMessage="#{bundle.CreateVehiclePartnerRequiredMessage_insurance}"/>
+                    <h:outputLabel value="#{bundle.CreateVehiclePartnerLabel_ownershipTittle}" for="ownershipTittle" />
+                    <h:inputText id="ownershipTittle" value="#{vehiclePartnerController.selected.ownershipTittle}" title="#{bundle.CreateVehiclePartnerTitle_ownershipTittle}" required="true" requiredMessage="#{bundle.CreateVehiclePartnerRequiredMessage_ownershipTittle}"/>
+                    <h:outputLabel value="#{bundle.CreateVehiclePartnerLabel_registration}" for="registration" />
+                    <h:inputText id="registration" value="#{vehiclePartnerController.selected.registration}" title="#{bundle.CreateVehiclePartnerTitle_registration}" required="true" requiredMessage="#{bundle.CreateVehiclePartnerRequiredMessage_registration}"/>
+                    <h:outputLabel value="#{bundle.CreateVehiclePartnerLabel_status}" for="status" />
+                    <h:inputText id="status" value="#{vehiclePartnerController.selected.status}" title="#{bundle.CreateVehiclePartnerTitle_status}" />
+                    <h:outputLabel value="#{bundle.CreateVehiclePartnerLabel_idUser}" for="idUser" />
+                    <h:selectOneMenu id="idUser" value="#{vehiclePartnerController.selected.idUser}" title="#{bundle.CreateVehiclePartnerTitle_idUser}" required="true" requiredMessage="#{bundle.CreateVehiclePartnerRequiredMessage_idUser}">
+                        <f:selectItems value="#{userWecoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateVehiclePartnerLabel_idVehicle}" for="idVehicle" />
+                    <h:selectOneMenu id="idVehicle" value="#{vehiclePartnerController.selected.idVehicle}" title="#{bundle.CreateVehiclePartnerTitle_idVehicle}" required="true" requiredMessage="#{bundle.CreateVehiclePartnerRequiredMessage_idVehicle}">
+                        <f:selectItems value="#{vehicleController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{vehiclePartnerController.create}" value="#{bundle.CreateVehiclePartnerSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{vehiclePartnerController.prepareList}" value="#{bundle.CreateVehiclePartnerShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateVehiclePartnerIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

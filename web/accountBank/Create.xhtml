@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateAccountBankTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateAccountBankLabel_idAccountBank}" for="idAccountBank" />
+                    <h:inputText id="idAccountBank" value="#{accountBankController.selected.idAccountBank}" title="#{bundle.CreateAccountBankTitle_idAccountBank}" required="true" requiredMessage="#{bundle.CreateAccountBankRequiredMessage_idAccountBank}"/>
+                    <h:outputLabel value="#{bundle.CreateAccountBankLabel_numberAccountBank}" for="numberAccountBank" />
+                    <h:inputText id="numberAccountBank" value="#{accountBankController.selected.numberAccountBank}" title="#{bundle.CreateAccountBankTitle_numberAccountBank}" required="true" requiredMessage="#{bundle.CreateAccountBankRequiredMessage_numberAccountBank}"/>
+                    <h:outputLabel value="#{bundle.CreateAccountBankLabel_nameBank}" for="nameBank" />
+                    <h:inputText id="nameBank" value="#{accountBankController.selected.nameBank}" title="#{bundle.CreateAccountBankTitle_nameBank}" required="true" requiredMessage="#{bundle.CreateAccountBankRequiredMessage_nameBank}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateAccountBankLabel_idAba}" for="idAba" />
+                    <h:inputText id="idAba" value="#{accountBankController.selected.idAba}" title="#{bundle.CreateAccountBankTitle_idAba}" required="true" requiredMessage="#{bundle.CreateAccountBankRequiredMessage_idAba}"/>
+                    <h:outputLabel value="#{bundle.CreateAccountBankLabel_kindAccount}" for="kindAccount" />
+                    <h:inputText id="kindAccount" value="#{accountBankController.selected.kindAccount}" title="#{bundle.CreateAccountBankTitle_kindAccount}" required="true" requiredMessage="#{bundle.CreateAccountBankRequiredMessage_kindAccount}"/>
+                    <h:outputLabel value="#{bundle.CreateAccountBankLabel_status}" for="status" />
+                    <h:inputText id="status" value="#{accountBankController.selected.status}" title="#{bundle.CreateAccountBankTitle_status}" />
+                    <h:outputLabel value="#{bundle.CreateAccountBankLabel_idUser}" for="idUser" />
+                    <h:selectOneMenu id="idUser" value="#{accountBankController.selected.idUser}" title="#{bundle.CreateAccountBankTitle_idUser}" required="true" requiredMessage="#{bundle.CreateAccountBankRequiredMessage_idUser}">
+                        <f:selectItems value="#{userWecoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{accountBankController.create}" value="#{bundle.CreateAccountBankSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{accountBankController.prepareList}" value="#{bundle.CreateAccountBankShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateAccountBankIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

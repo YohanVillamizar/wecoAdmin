@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewCreditDebitCardsTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewCreditDebitCardsLabel_idCreditDebitCards}"/>
+                    <h:outputText value="#{creditDebitCardsController.selected.idCreditDebitCards}" title="#{bundle.ViewCreditDebitCardsTitle_idCreditDebitCards}"/>
+                    <h:outputText value="#{bundle.ViewCreditDebitCardsLabel_numberCard}"/>
+                    <h:outputText value="#{creditDebitCardsController.selected.numberCard}" title="#{bundle.ViewCreditDebitCardsTitle_numberCard}"/>
+                    <h:outputText value="#{bundle.ViewCreditDebitCardsLabel_dueDate}"/>
+                    <h:outputText value="#{creditDebitCardsController.selected.dueDate}" title="#{bundle.ViewCreditDebitCardsTitle_dueDate}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewCreditDebitCardsLabel_cvc}"/>
+                    <h:outputText value="#{creditDebitCardsController.selected.cvc}" title="#{bundle.ViewCreditDebitCardsTitle_cvc}"/>
+                    <h:outputText value="#{bundle.ViewCreditDebitCardsLabel_qrCode}"/>
+                    <h:outputText value="#{creditDebitCardsController.selected.qrCode}" title="#{bundle.ViewCreditDebitCardsTitle_qrCode}"/>
+                    <h:outputText value="#{bundle.ViewCreditDebitCardsLabel_status}"/>
+                    <h:outputText value="#{creditDebitCardsController.selected.status}" title="#{bundle.ViewCreditDebitCardsTitle_status}"/>
+                    <h:outputText value="#{bundle.ViewCreditDebitCardsLabel_userWecoIdUser}"/>
+                    <h:outputText value="#{creditDebitCardsController.selected.userWecoIdUser}" title="#{bundle.ViewCreditDebitCardsTitle_userWecoIdUser}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{creditDebitCardsController.destroyAndView}" value="#{bundle.ViewCreditDebitCardsDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewCreditDebitCardsEditLink}"/>
+                <br />
+                <h:commandLink action="#{creditDebitCardsController.prepareCreate}" value="#{bundle.ViewCreditDebitCardsCreateLink}" />
+                <br />
+                <h:commandLink action="#{creditDebitCardsController.prepareList}" value="#{bundle.ViewCreditDebitCardsShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewCreditDebitCardsIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

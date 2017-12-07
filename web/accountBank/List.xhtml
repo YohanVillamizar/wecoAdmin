@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListAccountBankTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListAccountBankEmpty}" rendered="#{accountBankController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{accountBankController.items.rowCount > 0}">
+                    <h:outputText value="#{accountBankController.pagination.pageFirstItem + 1}..#{accountBankController.pagination.pageLastItem + 1}/#{accountBankController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{accountBankController.previous}" value="#{bundle.Previous} #{accountBankController.pagination.pageSize}" rendered="#{accountBankController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{accountBankController.next}" value="#{bundle.Next} #{accountBankController.pagination.pageSize}" rendered="#{accountBankController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{accountBankController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAccountBankTitle_idAccountBank}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idAccountBank}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAccountBankTitle_numberAccountBank}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.numberAccountBank}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAccountBankTitle_nameBank}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nameBank}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAccountBankTitle_idAba}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idAba}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAccountBankTitle_kindAccount}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.kindAccount}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAccountBankTitle_status}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.status}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAccountBankTitle_idUser}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idUser}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{accountBankController.prepareView}" value="#{bundle.ListAccountBankViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{accountBankController.prepareEdit}" value="#{bundle.ListAccountBankEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{accountBankController.destroy}" value="#{bundle.ListAccountBankDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{accountBankController.prepareCreate}" value="#{bundle.ListAccountBankCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListAccountBankIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

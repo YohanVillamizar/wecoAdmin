@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewTechnicalSoportTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewTechnicalSoportLabel_idReport}"/>
+                    <h:outputText value="#{technicalSoportController.selected.idReport}" title="#{bundle.ViewTechnicalSoportTitle_idReport}"/>
+                    <h:outputText value="#{bundle.ViewTechnicalSoportLabel_receiveDate}"/>
+                    <h:outputText value="#{technicalSoportController.selected.receiveDate}" title="#{bundle.ViewTechnicalSoportTitle_receiveDate}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewTechnicalSoportLabel_deliveryDate}"/>
+                    <h:outputText value="#{technicalSoportController.selected.deliveryDate}" title="#{bundle.ViewTechnicalSoportTitle_deliveryDate}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewTechnicalSoportLabel_reason}"/>
+                    <h:outputText value="#{technicalSoportController.selected.reason}" title="#{bundle.ViewTechnicalSoportTitle_reason}"/>
+                    <h:outputText value="#{bundle.ViewTechnicalSoportLabel_solution}"/>
+                    <h:outputText value="#{technicalSoportController.selected.solution}" title="#{bundle.ViewTechnicalSoportTitle_solution}"/>
+                    <h:outputText value="#{bundle.ViewTechnicalSoportLabel_observations}"/>
+                    <h:outputText value="#{technicalSoportController.selected.observations}" title="#{bundle.ViewTechnicalSoportTitle_observations}"/>
+                    <h:outputText value="#{bundle.ViewTechnicalSoportLabel_status}"/>
+                    <h:outputText value="#{technicalSoportController.selected.status}" title="#{bundle.ViewTechnicalSoportTitle_status}"/>
+                    <h:outputText value="#{bundle.ViewTechnicalSoportLabel_idComplaint}"/>
+                    <h:outputText value="#{technicalSoportController.selected.idComplaint}" title="#{bundle.ViewTechnicalSoportTitle_idComplaint}"/>
+                    <h:outputText value="#{bundle.ViewTechnicalSoportLabel_idUser}"/>
+                    <h:outputText value="#{technicalSoportController.selected.idUser}" title="#{bundle.ViewTechnicalSoportTitle_idUser}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{technicalSoportController.destroyAndView}" value="#{bundle.ViewTechnicalSoportDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewTechnicalSoportEditLink}"/>
+                <br />
+                <h:commandLink action="#{technicalSoportController.prepareCreate}" value="#{bundle.ViewTechnicalSoportCreateLink}" />
+                <br />
+                <h:commandLink action="#{technicalSoportController.prepareList}" value="#{bundle.ViewTechnicalSoportShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewTechnicalSoportIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

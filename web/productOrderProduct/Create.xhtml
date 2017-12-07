@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateProductOrderProductTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateProductOrderProductLabel_idProdOrderProd}" for="idProdOrderProd" />
+                    <h:inputText id="idProdOrderProd" value="#{productOrderProductController.selected.idProdOrderProd}" title="#{bundle.CreateProductOrderProductTitle_idProdOrderProd}" required="true" requiredMessage="#{bundle.CreateProductOrderProductRequiredMessage_idProdOrderProd}"/>
+                    <h:outputLabel value="#{bundle.CreateProductOrderProductLabel_aditionalCost}" for="aditionalCost" />
+                    <h:inputText id="aditionalCost" value="#{productOrderProductController.selected.aditionalCost}" title="#{bundle.CreateProductOrderProductTitle_aditionalCost}" />
+                    <h:outputLabel value="#{bundle.CreateProductOrderProductLabel_aditionalCostDescription}" for="aditionalCostDescription" />
+                    <h:inputText id="aditionalCostDescription" value="#{productOrderProductController.selected.aditionalCostDescription}" title="#{bundle.CreateProductOrderProductTitle_aditionalCostDescription}" />
+                    <h:outputLabel value="#{bundle.CreateProductOrderProductLabel_photo}" for="photo" />
+                    <h:inputText id="photo" value="#{productOrderProductController.selected.photo}" title="#{bundle.CreateProductOrderProductTitle_photo}" required="true" requiredMessage="#{bundle.CreateProductOrderProductRequiredMessage_photo}"/>
+                    <h:outputLabel value="#{bundle.CreateProductOrderProductLabel_datePOP}" for="datePOP" />
+                    <h:inputText id="datePOP" value="#{productOrderProductController.selected.datePOP}" title="#{bundle.CreateProductOrderProductTitle_datePOP}" required="true" requiredMessage="#{bundle.CreateProductOrderProductRequiredMessage_datePOP}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateProductOrderProductLabel_hour}" for="hour" />
+                    <h:inputText id="hour" value="#{productOrderProductController.selected.hour}" title="#{bundle.CreateProductOrderProductTitle_hour}" required="true" requiredMessage="#{bundle.CreateProductOrderProductRequiredMessage_hour}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateProductOrderProductLabel_status}" for="status" />
+                    <h:inputText id="status" value="#{productOrderProductController.selected.status}" title="#{bundle.CreateProductOrderProductTitle_status}" />
+                    <h:outputLabel value="#{bundle.CreateProductOrderProductLabel_productCost}" for="productCost" />
+                    <h:inputText id="productCost" value="#{productOrderProductController.selected.productCost}" title="#{bundle.CreateProductOrderProductTitle_productCost}" required="true" requiredMessage="#{bundle.CreateProductOrderProductRequiredMessage_productCost}"/>
+                    <h:outputLabel value="#{bundle.CreateProductOrderProductLabel_idOrderProduct}" for="idOrderProduct" />
+                    <h:selectOneMenu id="idOrderProduct" value="#{productOrderProductController.selected.idOrderProduct}" title="#{bundle.CreateProductOrderProductTitle_idOrderProduct}" required="true" requiredMessage="#{bundle.CreateProductOrderProductRequiredMessage_idOrderProduct}">
+                        <f:selectItems value="#{orderProductController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateProductOrderProductLabel_idProduct}" for="idProduct" />
+                    <h:selectOneMenu id="idProduct" value="#{productOrderProductController.selected.idProduct}" title="#{bundle.CreateProductOrderProductTitle_idProduct}" required="true" requiredMessage="#{bundle.CreateProductOrderProductRequiredMessage_idProduct}">
+                        <f:selectItems value="#{productController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{productOrderProductController.create}" value="#{bundle.CreateProductOrderProductSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{productOrderProductController.prepareList}" value="#{bundle.CreateProductOrderProductShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateProductOrderProductIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewServicePartnerTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewServicePartnerLabel_idServicePartner}"/>
+                    <h:outputText value="#{servicePartnerController.selected.idServicePartner}" title="#{bundle.ViewServicePartnerTitle_idServicePartner}"/>
+                    <h:outputText value="#{bundle.ViewServicePartnerLabel_description}"/>
+                    <h:outputText value="#{servicePartnerController.selected.description}" title="#{bundle.ViewServicePartnerTitle_description}"/>
+                    <h:outputText value="#{bundle.ViewServicePartnerLabel_costServicePartner}"/>
+                    <h:outputText value="#{servicePartnerController.selected.costServicePartner}" title="#{bundle.ViewServicePartnerTitle_costServicePartner}"/>
+                    <h:outputText value="#{bundle.ViewServicePartnerLabel_status}"/>
+                    <h:outputText value="#{servicePartnerController.selected.status}" title="#{bundle.ViewServicePartnerTitle_status}"/>
+                    <h:outputText value="#{bundle.ViewServicePartnerLabel_idService}"/>
+                    <h:outputText value="#{servicePartnerController.selected.idService}" title="#{bundle.ViewServicePartnerTitle_idService}"/>
+                    <h:outputText value="#{bundle.ViewServicePartnerLabel_idUser}"/>
+                    <h:outputText value="#{servicePartnerController.selected.idUser}" title="#{bundle.ViewServicePartnerTitle_idUser}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{servicePartnerController.destroyAndView}" value="#{bundle.ViewServicePartnerDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewServicePartnerEditLink}"/>
+                <br />
+                <h:commandLink action="#{servicePartnerController.prepareCreate}" value="#{bundle.ViewServicePartnerCreateLink}" />
+                <br />
+                <h:commandLink action="#{servicePartnerController.prepareList}" value="#{bundle.ViewServicePartnerShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewServicePartnerIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditComplaintTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditComplaintLabel_idComplaint}" for="idComplaint" />
+                    <h:inputText id="idComplaint" value="#{complaintController.selected.idComplaint}" title="#{bundle.EditComplaintTitle_idComplaint}" required="true" requiredMessage="#{bundle.EditComplaintRequiredMessage_idComplaint}"/>
+                    <h:outputLabel value="#{bundle.EditComplaintLabel_subject}" for="subject" />
+                    <h:inputText id="subject" value="#{complaintController.selected.subject}" title="#{bundle.EditComplaintTitle_subject}" required="true" requiredMessage="#{bundle.EditComplaintRequiredMessage_subject}"/>
+                    <h:outputLabel value="#{bundle.EditComplaintLabel_description}" for="description" />
+                    <h:inputText id="description" value="#{complaintController.selected.description}" title="#{bundle.EditComplaintTitle_description}" required="true" requiredMessage="#{bundle.EditComplaintRequiredMessage_description}"/>
+                    <h:outputLabel value="#{bundle.EditComplaintLabel_photo}" for="photo" />
+                    <h:inputText id="photo" value="#{complaintController.selected.photo}" title="#{bundle.EditComplaintTitle_photo}" required="true" requiredMessage="#{bundle.EditComplaintRequiredMessage_photo}"/>
+                    <h:outputLabel value="#{bundle.EditComplaintLabel_complaintDate}" for="complaintDate" />
+                    <h:inputText id="complaintDate" value="#{complaintController.selected.complaintDate}" title="#{bundle.EditComplaintTitle_complaintDate}" required="true" requiredMessage="#{bundle.EditComplaintRequiredMessage_complaintDate}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditComplaintLabel_status}" for="status" />
+                    <h:inputText id="status" value="#{complaintController.selected.status}" title="#{bundle.EditComplaintTitle_status}" />
+                    <h:outputLabel value="#{bundle.EditComplaintLabel_idProductService}" for="idProductService" />
+                    <h:inputText id="idProductService" value="#{complaintController.selected.idProductService}" title="#{bundle.EditComplaintTitle_idProductService}" required="true" requiredMessage="#{bundle.EditComplaintRequiredMessage_idProductService}"/>
+                    <h:outputLabel value="#{bundle.EditComplaintLabel_tipoProductService}" for="tipoProductService" />
+                    <h:inputText id="tipoProductService" value="#{complaintController.selected.tipoProductService}" title="#{bundle.EditComplaintTitle_tipoProductService}" required="true" requiredMessage="#{bundle.EditComplaintRequiredMessage_tipoProductService}"/>
+                    <h:outputLabel value="#{bundle.EditComplaintLabel_idOrderProduct}" for="idOrderProduct" />
+                    <h:selectOneMenu id="idOrderProduct" value="#{complaintController.selected.idOrderProduct}" title="#{bundle.EditComplaintTitle_idOrderProduct}" required="true" requiredMessage="#{bundle.EditComplaintRequiredMessage_idOrderProduct}">
+                        <f:selectItems value="#{orderProductController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditComplaintLabel_idOrderService}" for="idOrderService" />
+                    <h:selectOneMenu id="idOrderService" value="#{complaintController.selected.idOrderService}" title="#{bundle.EditComplaintTitle_idOrderService}" required="true" requiredMessage="#{bundle.EditComplaintRequiredMessage_idOrderService}">
+                        <f:selectItems value="#{orderServiceController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{complaintController.update}" value="#{bundle.EditComplaintSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditComplaintViewLink}"/>
+                <br />
+                <h:commandLink action="#{complaintController.prepareList}" value="#{bundle.EditComplaintShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditComplaintIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

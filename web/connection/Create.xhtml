@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateConnectionTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateConnectionLabel_idConnection}" for="idConnection" />
+                    <h:inputText id="idConnection" value="#{connectionController.selected.idConnection}" title="#{bundle.CreateConnectionTitle_idConnection}" required="true" requiredMessage="#{bundle.CreateConnectionRequiredMessage_idConnection}"/>
+                    <h:outputLabel value="#{bundle.CreateConnectionLabel_login}" for="login" />
+                    <h:inputText id="login" value="#{connectionController.selected.login}" title="#{bundle.CreateConnectionTitle_login}" required="true" requiredMessage="#{bundle.CreateConnectionRequiredMessage_login}"/>
+                    <h:outputLabel value="#{bundle.CreateConnectionLabel_password}" for="password" />
+                    <h:inputText id="password" value="#{connectionController.selected.password}" title="#{bundle.CreateConnectionTitle_password}" required="true" requiredMessage="#{bundle.CreateConnectionRequiredMessage_password}"/>
+                    <h:outputLabel value="#{bundle.CreateConnectionLabel_dateConnection}" for="dateConnection" />
+                    <h:inputText id="dateConnection" value="#{connectionController.selected.dateConnection}" title="#{bundle.CreateConnectionTitle_dateConnection}" required="true" requiredMessage="#{bundle.CreateConnectionRequiredMessage_dateConnection}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateConnectionLabel_key}" for="key" />
+                    <h:inputText id="key" value="#{connectionController.selected.key}" title="#{bundle.CreateConnectionTitle_key}" />
+                    <h:outputLabel value="#{bundle.CreateConnectionLabel_status}" for="status" />
+                    <h:inputText id="status" value="#{connectionController.selected.status}" title="#{bundle.CreateConnectionTitle_status}" />
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{connectionController.create}" value="#{bundle.CreateConnectionSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{connectionController.prepareList}" value="#{bundle.CreateConnectionShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateConnectionIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

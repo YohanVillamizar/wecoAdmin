@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditCreditDebitCardsTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditCreditDebitCardsLabel_idCreditDebitCards}" for="idCreditDebitCards" />
+                    <h:inputText id="idCreditDebitCards" value="#{creditDebitCardsController.selected.idCreditDebitCards}" title="#{bundle.EditCreditDebitCardsTitle_idCreditDebitCards}" required="true" requiredMessage="#{bundle.EditCreditDebitCardsRequiredMessage_idCreditDebitCards}"/>
+                    <h:outputLabel value="#{bundle.EditCreditDebitCardsLabel_numberCard}" for="numberCard" />
+                    <h:inputText id="numberCard" value="#{creditDebitCardsController.selected.numberCard}" title="#{bundle.EditCreditDebitCardsTitle_numberCard}" required="true" requiredMessage="#{bundle.EditCreditDebitCardsRequiredMessage_numberCard}"/>
+                    <h:outputLabel value="#{bundle.EditCreditDebitCardsLabel_dueDate}" for="dueDate" />
+                    <h:inputText id="dueDate" value="#{creditDebitCardsController.selected.dueDate}" title="#{bundle.EditCreditDebitCardsTitle_dueDate}" required="true" requiredMessage="#{bundle.EditCreditDebitCardsRequiredMessage_dueDate}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditCreditDebitCardsLabel_cvc}" for="cvc" />
+                    <h:inputText id="cvc" value="#{creditDebitCardsController.selected.cvc}" title="#{bundle.EditCreditDebitCardsTitle_cvc}" required="true" requiredMessage="#{bundle.EditCreditDebitCardsRequiredMessage_cvc}"/>
+                    <h:outputLabel value="#{bundle.EditCreditDebitCardsLabel_qrCode}" for="qrCode" />
+                    <h:inputText id="qrCode" value="#{creditDebitCardsController.selected.qrCode}" title="#{bundle.EditCreditDebitCardsTitle_qrCode}" required="true" requiredMessage="#{bundle.EditCreditDebitCardsRequiredMessage_qrCode}"/>
+                    <h:outputLabel value="#{bundle.EditCreditDebitCardsLabel_status}" for="status" />
+                    <h:inputText id="status" value="#{creditDebitCardsController.selected.status}" title="#{bundle.EditCreditDebitCardsTitle_status}" />
+                    <h:outputLabel value="#{bundle.EditCreditDebitCardsLabel_userWecoIdUser}" for="userWecoIdUser" />
+                    <h:selectOneMenu id="userWecoIdUser" value="#{creditDebitCardsController.selected.userWecoIdUser}" title="#{bundle.EditCreditDebitCardsTitle_userWecoIdUser}" required="true" requiredMessage="#{bundle.EditCreditDebitCardsRequiredMessage_userWecoIdUser}">
+                        <f:selectItems value="#{userWecoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{creditDebitCardsController.update}" value="#{bundle.EditCreditDebitCardsSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditCreditDebitCardsViewLink}"/>
+                <br />
+                <h:commandLink action="#{creditDebitCardsController.prepareList}" value="#{bundle.EditCreditDebitCardsShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditCreditDebitCardsIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

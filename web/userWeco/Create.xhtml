@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateUserWecoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateUserWecoLabel_idUser}" for="idUser" />
+                    <h:inputText id="idUser" value="#{userWecoController.selected.idUser}" title="#{bundle.CreateUserWecoTitle_idUser}" required="true" requiredMessage="#{bundle.CreateUserWecoRequiredMessage_idUser}"/>
+                    <h:outputLabel value="#{bundle.CreateUserWecoLabel_name}" for="name" />
+                    <h:inputText id="name" value="#{userWecoController.selected.name}" title="#{bundle.CreateUserWecoTitle_name}" required="true" requiredMessage="#{bundle.CreateUserWecoRequiredMessage_name}"/>
+                    <h:outputLabel value="#{bundle.CreateUserWecoLabel_lastname}" for="lastname" />
+                    <h:inputText id="lastname" value="#{userWecoController.selected.lastname}" title="#{bundle.CreateUserWecoTitle_lastname}" required="true" requiredMessage="#{bundle.CreateUserWecoRequiredMessage_lastname}"/>
+                    <h:outputLabel value="#{bundle.CreateUserWecoLabel_birthday}" for="birthday" />
+                    <h:inputText id="birthday" value="#{userWecoController.selected.birthday}" title="#{bundle.CreateUserWecoTitle_birthday}" required="true" requiredMessage="#{bundle.CreateUserWecoRequiredMessage_birthday}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateUserWecoLabel_dni}" for="dni" />
+                    <h:inputText id="dni" value="#{userWecoController.selected.dni}" title="#{bundle.CreateUserWecoTitle_dni}" required="true" requiredMessage="#{bundle.CreateUserWecoRequiredMessage_dni}"/>
+                    <h:outputLabel value="#{bundle.CreateUserWecoLabel_address}" for="address" />
+                    <h:inputText id="address" value="#{userWecoController.selected.address}" title="#{bundle.CreateUserWecoTitle_address}" />
+                    <h:outputLabel value="#{bundle.CreateUserWecoLabel_email}" for="email" />
+                    <h:inputText id="email" value="#{userWecoController.selected.email}" title="#{bundle.CreateUserWecoTitle_email}" />
+                    <h:outputLabel value="#{bundle.CreateUserWecoLabel_licenceNumber}" for="licenceNumber" />
+                    <h:inputText id="licenceNumber" value="#{userWecoController.selected.licenceNumber}" title="#{bundle.CreateUserWecoTitle_licenceNumber}" />
+                    <h:outputLabel value="#{bundle.CreateUserWecoLabel_gender}" for="gender" />
+                    <h:inputText id="gender" value="#{userWecoController.selected.gender}" title="#{bundle.CreateUserWecoTitle_gender}" />
+                    <h:outputLabel value="#{bundle.CreateUserWecoLabel_phoneNumber}" for="phoneNumber" />
+                    <h:inputText id="phoneNumber" value="#{userWecoController.selected.phoneNumber}" title="#{bundle.CreateUserWecoTitle_phoneNumber}" />
+                    <h:outputLabel value="#{bundle.CreateUserWecoLabel_login}" for="login" />
+                    <h:inputText id="login" value="#{userWecoController.selected.login}" title="#{bundle.CreateUserWecoTitle_login}" required="true" requiredMessage="#{bundle.CreateUserWecoRequiredMessage_login}"/>
+                    <h:outputLabel value="#{bundle.CreateUserWecoLabel_password}" for="password" />
+                    <h:inputText id="password" value="#{userWecoController.selected.password}" title="#{bundle.CreateUserWecoTitle_password}" required="true" requiredMessage="#{bundle.CreateUserWecoRequiredMessage_password}"/>
+                    <h:outputLabel value="#{bundle.CreateUserWecoLabel_dateStart}" for="dateStart" />
+                    <h:inputText id="dateStart" value="#{userWecoController.selected.dateStart}" title="#{bundle.CreateUserWecoTitle_dateStart}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateUserWecoLabel_dateRegister}" for="dateRegister" />
+                    <h:inputText id="dateRegister" value="#{userWecoController.selected.dateRegister}" title="#{bundle.CreateUserWecoTitle_dateRegister}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateUserWecoLabel_calification}" for="calification" />
+                    <h:inputText id="calification" value="#{userWecoController.selected.calification}" title="#{bundle.CreateUserWecoTitle_calification}" />
+                    <h:outputLabel value="#{bundle.CreateUserWecoLabel_photo}" for="photo" />
+                    <h:inputText id="photo" value="#{userWecoController.selected.photo}" title="#{bundle.CreateUserWecoTitle_photo}" />
+                    <h:outputLabel value="#{bundle.CreateUserWecoLabel_status}" for="status" />
+                    <h:inputText id="status" value="#{userWecoController.selected.status}" title="#{bundle.CreateUserWecoTitle_status}" />
+                    <h:outputLabel value="#{bundle.CreateUserWecoLabel_idLocation}" for="idLocation" />
+                    <h:selectOneMenu id="idLocation" value="#{userWecoController.selected.idLocation}" title="#{bundle.CreateUserWecoTitle_idLocation}" required="true" requiredMessage="#{bundle.CreateUserWecoRequiredMessage_idLocation}">
+                        <f:selectItems value="#{locationController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateUserWecoLabel_idRol}" for="idRol" />
+                    <h:selectOneMenu id="idRol" value="#{userWecoController.selected.idRol}" title="#{bundle.CreateUserWecoTitle_idRol}" required="true" requiredMessage="#{bundle.CreateUserWecoRequiredMessage_idRol}">
+                        <f:selectItems value="#{rolController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{userWecoController.create}" value="#{bundle.CreateUserWecoSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{userWecoController.prepareList}" value="#{bundle.CreateUserWecoShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateUserWecoIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

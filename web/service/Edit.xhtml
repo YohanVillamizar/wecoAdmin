@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditServiceTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditServiceLabel_idService}" for="idService" />
+                    <h:inputText id="idService" value="#{serviceController.selected.idService}" title="#{bundle.EditServiceTitle_idService}" required="true" requiredMessage="#{bundle.EditServiceRequiredMessage_idService}"/>
+                    <h:outputLabel value="#{bundle.EditServiceLabel_name}" for="name" />
+                    <h:inputText id="name" value="#{serviceController.selected.name}" title="#{bundle.EditServiceTitle_name}" required="true" requiredMessage="#{bundle.EditServiceRequiredMessage_name}"/>
+                    <h:outputLabel value="#{bundle.EditServiceLabel_serviceCost}" for="serviceCost" />
+                    <h:inputText id="serviceCost" value="#{serviceController.selected.serviceCost}" title="#{bundle.EditServiceTitle_serviceCost}" />
+                    <h:outputLabel value="#{bundle.EditServiceLabel_description}" for="description" />
+                    <h:inputText id="description" value="#{serviceController.selected.description}" title="#{bundle.EditServiceTitle_description}" />
+                    <h:outputLabel value="#{bundle.EditServiceLabel_status}" for="status" />
+                    <h:inputText id="status" value="#{serviceController.selected.status}" title="#{bundle.EditServiceTitle_status}" />
+                    <h:outputLabel value="#{bundle.EditServiceLabel_idKindService}" for="idKindService" />
+                    <h:selectOneMenu id="idKindService" value="#{serviceController.selected.idKindService}" title="#{bundle.EditServiceTitle_idKindService}" required="true" requiredMessage="#{bundle.EditServiceRequiredMessage_idKindService}">
+                        <f:selectItems value="#{packageServiceController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{serviceController.update}" value="#{bundle.EditServiceSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditServiceViewLink}"/>
+                <br />
+                <h:commandLink action="#{serviceController.prepareList}" value="#{bundle.EditServiceShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditServiceIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

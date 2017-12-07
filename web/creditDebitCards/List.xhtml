@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListCreditDebitCardsTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListCreditDebitCardsEmpty}" rendered="#{creditDebitCardsController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{creditDebitCardsController.items.rowCount > 0}">
+                    <h:outputText value="#{creditDebitCardsController.pagination.pageFirstItem + 1}..#{creditDebitCardsController.pagination.pageLastItem + 1}/#{creditDebitCardsController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{creditDebitCardsController.previous}" value="#{bundle.Previous} #{creditDebitCardsController.pagination.pageSize}" rendered="#{creditDebitCardsController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{creditDebitCardsController.next}" value="#{bundle.Next} #{creditDebitCardsController.pagination.pageSize}" rendered="#{creditDebitCardsController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{creditDebitCardsController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCreditDebitCardsTitle_idCreditDebitCards}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idCreditDebitCards}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCreditDebitCardsTitle_numberCard}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.numberCard}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCreditDebitCardsTitle_dueDate}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dueDate}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCreditDebitCardsTitle_cvc}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.cvc}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCreditDebitCardsTitle_qrCode}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.qrCode}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCreditDebitCardsTitle_status}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.status}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCreditDebitCardsTitle_userWecoIdUser}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.userWecoIdUser}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{creditDebitCardsController.prepareView}" value="#{bundle.ListCreditDebitCardsViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{creditDebitCardsController.prepareEdit}" value="#{bundle.ListCreditDebitCardsEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{creditDebitCardsController.destroy}" value="#{bundle.ListCreditDebitCardsDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{creditDebitCardsController.prepareCreate}" value="#{bundle.ListCreditDebitCardsCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListCreditDebitCardsIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewAccountBankTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewAccountBankLabel_idAccountBank}"/>
+                    <h:outputText value="#{accountBankController.selected.idAccountBank}" title="#{bundle.ViewAccountBankTitle_idAccountBank}"/>
+                    <h:outputText value="#{bundle.ViewAccountBankLabel_numberAccountBank}"/>
+                    <h:outputText value="#{accountBankController.selected.numberAccountBank}" title="#{bundle.ViewAccountBankTitle_numberAccountBank}"/>
+                    <h:outputText value="#{bundle.ViewAccountBankLabel_nameBank}"/>
+                    <h:outputText value="#{accountBankController.selected.nameBank}" title="#{bundle.ViewAccountBankTitle_nameBank}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewAccountBankLabel_idAba}"/>
+                    <h:outputText value="#{accountBankController.selected.idAba}" title="#{bundle.ViewAccountBankTitle_idAba}"/>
+                    <h:outputText value="#{bundle.ViewAccountBankLabel_kindAccount}"/>
+                    <h:outputText value="#{accountBankController.selected.kindAccount}" title="#{bundle.ViewAccountBankTitle_kindAccount}"/>
+                    <h:outputText value="#{bundle.ViewAccountBankLabel_status}"/>
+                    <h:outputText value="#{accountBankController.selected.status}" title="#{bundle.ViewAccountBankTitle_status}"/>
+                    <h:outputText value="#{bundle.ViewAccountBankLabel_idUser}"/>
+                    <h:outputText value="#{accountBankController.selected.idUser}" title="#{bundle.ViewAccountBankTitle_idUser}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{accountBankController.destroyAndView}" value="#{bundle.ViewAccountBankDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewAccountBankEditLink}"/>
+                <br />
+                <h:commandLink action="#{accountBankController.prepareCreate}" value="#{bundle.ViewAccountBankCreateLink}" />
+                <br />
+                <h:commandLink action="#{accountBankController.prepareList}" value="#{bundle.ViewAccountBankShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewAccountBankIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

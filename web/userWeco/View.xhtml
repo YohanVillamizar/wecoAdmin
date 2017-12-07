@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewUserWecoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewUserWecoLabel_idUser}"/>
+                    <h:outputText value="#{userWecoController.selected.idUser}" title="#{bundle.ViewUserWecoTitle_idUser}"/>
+                    <h:outputText value="#{bundle.ViewUserWecoLabel_name}"/>
+                    <h:outputText value="#{userWecoController.selected.name}" title="#{bundle.ViewUserWecoTitle_name}"/>
+                    <h:outputText value="#{bundle.ViewUserWecoLabel_lastname}"/>
+                    <h:outputText value="#{userWecoController.selected.lastname}" title="#{bundle.ViewUserWecoTitle_lastname}"/>
+                    <h:outputText value="#{bundle.ViewUserWecoLabel_birthday}"/>
+                    <h:outputText value="#{userWecoController.selected.birthday}" title="#{bundle.ViewUserWecoTitle_birthday}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewUserWecoLabel_dni}"/>
+                    <h:outputText value="#{userWecoController.selected.dni}" title="#{bundle.ViewUserWecoTitle_dni}"/>
+                    <h:outputText value="#{bundle.ViewUserWecoLabel_address}"/>
+                    <h:outputText value="#{userWecoController.selected.address}" title="#{bundle.ViewUserWecoTitle_address}"/>
+                    <h:outputText value="#{bundle.ViewUserWecoLabel_email}"/>
+                    <h:outputText value="#{userWecoController.selected.email}" title="#{bundle.ViewUserWecoTitle_email}"/>
+                    <h:outputText value="#{bundle.ViewUserWecoLabel_licenceNumber}"/>
+                    <h:outputText value="#{userWecoController.selected.licenceNumber}" title="#{bundle.ViewUserWecoTitle_licenceNumber}"/>
+                    <h:outputText value="#{bundle.ViewUserWecoLabel_gender}"/>
+                    <h:outputText value="#{userWecoController.selected.gender}" title="#{bundle.ViewUserWecoTitle_gender}"/>
+                    <h:outputText value="#{bundle.ViewUserWecoLabel_phoneNumber}"/>
+                    <h:outputText value="#{userWecoController.selected.phoneNumber}" title="#{bundle.ViewUserWecoTitle_phoneNumber}"/>
+                    <h:outputText value="#{bundle.ViewUserWecoLabel_login}"/>
+                    <h:outputText value="#{userWecoController.selected.login}" title="#{bundle.ViewUserWecoTitle_login}"/>
+                    <h:outputText value="#{bundle.ViewUserWecoLabel_password}"/>
+                    <h:outputText value="#{userWecoController.selected.password}" title="#{bundle.ViewUserWecoTitle_password}"/>
+                    <h:outputText value="#{bundle.ViewUserWecoLabel_dateStart}"/>
+                    <h:outputText value="#{userWecoController.selected.dateStart}" title="#{bundle.ViewUserWecoTitle_dateStart}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewUserWecoLabel_dateRegister}"/>
+                    <h:outputText value="#{userWecoController.selected.dateRegister}" title="#{bundle.ViewUserWecoTitle_dateRegister}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewUserWecoLabel_calification}"/>
+                    <h:outputText value="#{userWecoController.selected.calification}" title="#{bundle.ViewUserWecoTitle_calification}"/>
+                    <h:outputText value="#{bundle.ViewUserWecoLabel_photo}"/>
+                    <h:outputText value="#{userWecoController.selected.photo}" title="#{bundle.ViewUserWecoTitle_photo}"/>
+                    <h:outputText value="#{bundle.ViewUserWecoLabel_status}"/>
+                    <h:outputText value="#{userWecoController.selected.status}" title="#{bundle.ViewUserWecoTitle_status}"/>
+                    <h:outputText value="#{bundle.ViewUserWecoLabel_idLocation}"/>
+                    <h:outputText value="#{userWecoController.selected.idLocation}" title="#{bundle.ViewUserWecoTitle_idLocation}"/>
+                    <h:outputText value="#{bundle.ViewUserWecoLabel_idRol}"/>
+                    <h:outputText value="#{userWecoController.selected.idRol}" title="#{bundle.ViewUserWecoTitle_idRol}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{userWecoController.destroyAndView}" value="#{bundle.ViewUserWecoDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewUserWecoEditLink}"/>
+                <br />
+                <h:commandLink action="#{userWecoController.prepareCreate}" value="#{bundle.ViewUserWecoCreateLink}" />
+                <br />
+                <h:commandLink action="#{userWecoController.prepareList}" value="#{bundle.ViewUserWecoShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewUserWecoIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

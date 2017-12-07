@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListTechnicalSoportTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListTechnicalSoportEmpty}" rendered="#{technicalSoportController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{technicalSoportController.items.rowCount > 0}">
+                    <h:outputText value="#{technicalSoportController.pagination.pageFirstItem + 1}..#{technicalSoportController.pagination.pageLastItem + 1}/#{technicalSoportController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{technicalSoportController.previous}" value="#{bundle.Previous} #{technicalSoportController.pagination.pageSize}" rendered="#{technicalSoportController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{technicalSoportController.next}" value="#{bundle.Next} #{technicalSoportController.pagination.pageSize}" rendered="#{technicalSoportController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{technicalSoportController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTechnicalSoportTitle_idReport}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idReport}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTechnicalSoportTitle_receiveDate}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.receiveDate}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTechnicalSoportTitle_deliveryDate}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.deliveryDate}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTechnicalSoportTitle_reason}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.reason}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTechnicalSoportTitle_solution}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.solution}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTechnicalSoportTitle_observations}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.observations}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTechnicalSoportTitle_status}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.status}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTechnicalSoportTitle_idComplaint}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idComplaint}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTechnicalSoportTitle_idUser}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idUser}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{technicalSoportController.prepareView}" value="#{bundle.ListTechnicalSoportViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{technicalSoportController.prepareEdit}" value="#{bundle.ListTechnicalSoportEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{technicalSoportController.destroy}" value="#{bundle.ListTechnicalSoportDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{technicalSoportController.prepareCreate}" value="#{bundle.ListTechnicalSoportCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListTechnicalSoportIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

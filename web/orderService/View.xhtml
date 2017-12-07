@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewOrderServiceTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewOrderServiceLabel_idOrderService}"/>
+                    <h:outputText value="#{orderServiceController.selected.idOrderService}" title="#{bundle.ViewOrderServiceTitle_idOrderService}"/>
+                    <h:outputText value="#{bundle.ViewOrderServiceLabel_comissionService}"/>
+                    <h:outputText value="#{orderServiceController.selected.comissionService}" title="#{bundle.ViewOrderServiceTitle_comissionService}"/>
+                    <h:outputText value="#{bundle.ViewOrderServiceLabel_tipService}"/>
+                    <h:outputText value="#{orderServiceController.selected.tipService}" title="#{bundle.ViewOrderServiceTitle_tipService}"/>
+                    <h:outputText value="#{bundle.ViewOrderServiceLabel_dateOrder}"/>
+                    <h:outputText value="#{orderServiceController.selected.dateOrder}" title="#{bundle.ViewOrderServiceTitle_dateOrder}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewOrderServiceLabel_total}"/>
+                    <h:outputText value="#{orderServiceController.selected.total}" title="#{bundle.ViewOrderServiceTitle_total}"/>
+                    <h:outputText value="#{bundle.ViewOrderServiceLabel_startDate}"/>
+                    <h:outputText value="#{orderServiceController.selected.startDate}" title="#{bundle.ViewOrderServiceTitle_startDate}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewOrderServiceLabel_endDate}"/>
+                    <h:outputText value="#{orderServiceController.selected.endDate}" title="#{bundle.ViewOrderServiceTitle_endDate}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewOrderServiceLabel_startHour}"/>
+                    <h:outputText value="#{orderServiceController.selected.startHour}" title="#{bundle.ViewOrderServiceTitle_startHour}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewOrderServiceLabel_endHour}"/>
+                    <h:outputText value="#{orderServiceController.selected.endHour}" title="#{bundle.ViewOrderServiceTitle_endHour}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewOrderServiceLabel_wecoFee}"/>
+                    <h:outputText value="#{orderServiceController.selected.wecoFee}" title="#{bundle.ViewOrderServiceTitle_wecoFee}"/>
+                    <h:outputText value="#{bundle.ViewOrderServiceLabel_comissionFee}"/>
+                    <h:outputText value="#{orderServiceController.selected.comissionFee}" title="#{bundle.ViewOrderServiceTitle_comissionFee}"/>
+                    <h:outputText value="#{bundle.ViewOrderServiceLabel_gainPartner}"/>
+                    <h:outputText value="#{orderServiceController.selected.gainPartner}" title="#{bundle.ViewOrderServiceTitle_gainPartner}"/>
+                    <h:outputText value="#{bundle.ViewOrderServiceLabel_status}"/>
+                    <h:outputText value="#{orderServiceController.selected.status}" title="#{bundle.ViewOrderServiceTitle_status}"/>
+                    <h:outputText value="#{bundle.ViewOrderServiceLabel_idLocation}"/>
+                    <h:outputText value="#{orderServiceController.selected.idLocation}" title="#{bundle.ViewOrderServiceTitle_idLocation}"/>
+                    <h:outputText value="#{bundle.ViewOrderServiceLabel_idVehicleClient}"/>
+                    <h:outputText value="#{orderServiceController.selected.idVehicleClient}" title="#{bundle.ViewOrderServiceTitle_idVehicleClient}"/>
+                    <h:outputText value="#{bundle.ViewOrderServiceLabel_idVehiclePartner}"/>
+                    <h:outputText value="#{orderServiceController.selected.idVehiclePartner}" title="#{bundle.ViewOrderServiceTitle_idVehiclePartner}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{orderServiceController.destroyAndView}" value="#{bundle.ViewOrderServiceDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewOrderServiceEditLink}"/>
+                <br />
+                <h:commandLink action="#{orderServiceController.prepareCreate}" value="#{bundle.ViewOrderServiceCreateLink}" />
+                <br />
+                <h:commandLink action="#{orderServiceController.prepareList}" value="#{bundle.ViewOrderServiceShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewOrderServiceIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

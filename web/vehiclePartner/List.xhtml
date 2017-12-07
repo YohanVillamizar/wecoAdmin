@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListVehiclePartnerTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListVehiclePartnerEmpty}" rendered="#{vehiclePartnerController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{vehiclePartnerController.items.rowCount > 0}">
+                    <h:outputText value="#{vehiclePartnerController.pagination.pageFirstItem + 1}..#{vehiclePartnerController.pagination.pageLastItem + 1}/#{vehiclePartnerController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{vehiclePartnerController.previous}" value="#{bundle.Previous} #{vehiclePartnerController.pagination.pageSize}" rendered="#{vehiclePartnerController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{vehiclePartnerController.next}" value="#{bundle.Next} #{vehiclePartnerController.pagination.pageSize}" rendered="#{vehiclePartnerController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{vehiclePartnerController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListVehiclePartnerTitle_idVehiclePartner}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idVehiclePartner}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListVehiclePartnerTitle_insurance}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.insurance}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListVehiclePartnerTitle_ownershipTittle}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.ownershipTittle}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListVehiclePartnerTitle_registration}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.registration}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListVehiclePartnerTitle_status}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.status}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListVehiclePartnerTitle_idUser}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idUser}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListVehiclePartnerTitle_idVehicle}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idVehicle}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{vehiclePartnerController.prepareView}" value="#{bundle.ListVehiclePartnerViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{vehiclePartnerController.prepareEdit}" value="#{bundle.ListVehiclePartnerEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{vehiclePartnerController.destroy}" value="#{bundle.ListVehiclePartnerDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{vehiclePartnerController.prepareCreate}" value="#{bundle.ListVehiclePartnerCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListVehiclePartnerIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateBuyServiceTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateBuyServiceLabel_idBuyService}" for="idBuyService" />
+                    <h:inputText id="idBuyService" value="#{buyServiceController.selected.idBuyService}" title="#{bundle.CreateBuyServiceTitle_idBuyService}" required="true" requiredMessage="#{bundle.CreateBuyServiceRequiredMessage_idBuyService}"/>
+                    <h:outputLabel value="#{bundle.CreateBuyServiceLabel_idPackage}" for="idPackage" />
+                    <h:inputText id="idPackage" value="#{buyServiceController.selected.idPackage}" title="#{bundle.CreateBuyServiceTitle_idPackage}" required="true" requiredMessage="#{bundle.CreateBuyServiceRequiredMessage_idPackage}"/>
+                    <h:outputLabel value="#{bundle.CreateBuyServiceLabel_idSevice}" for="idSevice" />
+                    <h:inputText id="idSevice" value="#{buyServiceController.selected.idSevice}" title="#{bundle.CreateBuyServiceTitle_idSevice}" required="true" requiredMessage="#{bundle.CreateBuyServiceRequiredMessage_idSevice}"/>
+                    <h:outputLabel value="#{bundle.CreateBuyServiceLabel_aditionalCost}" for="aditionalCost" />
+                    <h:inputText id="aditionalCost" value="#{buyServiceController.selected.aditionalCost}" title="#{bundle.CreateBuyServiceTitle_aditionalCost}" />
+                    <h:outputLabel value="#{bundle.CreateBuyServiceLabel_aditionalCostDescription}" for="aditionalCostDescription" />
+                    <h:inputText id="aditionalCostDescription" value="#{buyServiceController.selected.aditionalCostDescription}" title="#{bundle.CreateBuyServiceTitle_aditionalCostDescription}" />
+                    <h:outputLabel value="#{bundle.CreateBuyServiceLabel_photo}" for="photo" />
+                    <h:inputText id="photo" value="#{buyServiceController.selected.photo}" title="#{bundle.CreateBuyServiceTitle_photo}" />
+                    <h:outputLabel value="#{bundle.CreateBuyServiceLabel_serviceCost}" for="serviceCost" />
+                    <h:inputText id="serviceCost" value="#{buyServiceController.selected.serviceCost}" title="#{bundle.CreateBuyServiceTitle_serviceCost}" />
+                    <h:outputLabel value="#{bundle.CreateBuyServiceLabel_status}" for="status" />
+                    <h:inputText id="status" value="#{buyServiceController.selected.status}" title="#{bundle.CreateBuyServiceTitle_status}" />
+                    <h:outputLabel value="#{bundle.CreateBuyServiceLabel_idOrderService}" for="idOrderService" />
+                    <h:selectOneMenu id="idOrderService" value="#{buyServiceController.selected.idOrderService}" title="#{bundle.CreateBuyServiceTitle_idOrderService}" required="true" requiredMessage="#{bundle.CreateBuyServiceRequiredMessage_idOrderService}">
+                        <f:selectItems value="#{orderServiceController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{buyServiceController.create}" value="#{bundle.CreateBuyServiceSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{buyServiceController.prepareList}" value="#{bundle.CreateBuyServiceShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateBuyServiceIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

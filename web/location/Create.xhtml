@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateLocationTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateLocationLabel_idLocation}" for="idLocation" />
+                    <h:inputText id="idLocation" value="#{locationController.selected.idLocation}" title="#{bundle.CreateLocationTitle_idLocation}" required="true" requiredMessage="#{bundle.CreateLocationRequiredMessage_idLocation}"/>
+                    <h:outputLabel value="#{bundle.CreateLocationLabel_name}" for="name" />
+                    <h:inputText id="name" value="#{locationController.selected.name}" title="#{bundle.CreateLocationTitle_name}" required="true" requiredMessage="#{bundle.CreateLocationRequiredMessage_name}"/>
+                    <h:outputLabel value="#{bundle.CreateLocationLabel_latitude}" for="latitude" />
+                    <h:inputText id="latitude" value="#{locationController.selected.latitude}" title="#{bundle.CreateLocationTitle_latitude}" required="true" requiredMessage="#{bundle.CreateLocationRequiredMessage_latitude}"/>
+                    <h:outputLabel value="#{bundle.CreateLocationLabel_longitude}" for="longitude" />
+                    <h:inputText id="longitude" value="#{locationController.selected.longitude}" title="#{bundle.CreateLocationTitle_longitude}" required="true" requiredMessage="#{bundle.CreateLocationRequiredMessage_longitude}"/>
+                    <h:outputLabel value="#{bundle.CreateLocationLabel_direction}" for="direction" />
+                    <h:inputText id="direction" value="#{locationController.selected.direction}" title="#{bundle.CreateLocationTitle_direction}" required="true" requiredMessage="#{bundle.CreateLocationRequiredMessage_direction}"/>
+                    <h:outputLabel value="#{bundle.CreateLocationLabel_zipcode}" for="zipcode" />
+                    <h:inputText id="zipcode" value="#{locationController.selected.zipcode}" title="#{bundle.CreateLocationTitle_zipcode}" required="true" requiredMessage="#{bundle.CreateLocationRequiredMessage_zipcode}"/>
+                    <h:outputLabel value="#{bundle.CreateLocationLabel_status}" for="status" />
+                    <h:inputText id="status" value="#{locationController.selected.status}" title="#{bundle.CreateLocationTitle_status}" />
+                    <h:outputLabel value="#{bundle.CreateLocationLabel_idCity}" for="idCity" />
+                    <h:selectOneMenu id="idCity" value="#{locationController.selected.idCity}" title="#{bundle.CreateLocationTitle_idCity}" required="true" requiredMessage="#{bundle.CreateLocationRequiredMessage_idCity}">
+                        <f:selectItems value="#{cityController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{locationController.create}" value="#{bundle.CreateLocationSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{locationController.prepareList}" value="#{bundle.CreateLocationShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateLocationIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

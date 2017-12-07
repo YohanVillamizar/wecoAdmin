@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListPartnerPayTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListPartnerPayEmpty}" rendered="#{partnerPayController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{partnerPayController.items.rowCount > 0}">
+                    <h:outputText value="#{partnerPayController.pagination.pageFirstItem + 1}..#{partnerPayController.pagination.pageLastItem + 1}/#{partnerPayController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{partnerPayController.previous}" value="#{bundle.Previous} #{partnerPayController.pagination.pageSize}" rendered="#{partnerPayController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{partnerPayController.next}" value="#{bundle.Next} #{partnerPayController.pagination.pageSize}" rendered="#{partnerPayController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{partnerPayController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPartnerPayTitle_idPartnerPay}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idPartnerPay}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPartnerPayTitle_description}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.description}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPartnerPayTitle_payDate}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.payDate}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPartnerPayTitle_hour}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.hour}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPartnerPayTitle_status}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.status}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPartnerPayTitle_idOrderService}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idOrderService}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{partnerPayController.prepareView}" value="#{bundle.ListPartnerPayViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{partnerPayController.prepareEdit}" value="#{bundle.ListPartnerPayEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{partnerPayController.destroy}" value="#{bundle.ListPartnerPayDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{partnerPayController.prepareCreate}" value="#{bundle.ListPartnerPayCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListPartnerPayIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

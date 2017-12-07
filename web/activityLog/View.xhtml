@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewActivityLogTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewActivityLogLabel_idActivityLog}"/>
+                    <h:outputText value="#{activityLogController.selected.idActivityLog}" title="#{bundle.ViewActivityLogTitle_idActivityLog}"/>
+                    <h:outputText value="#{bundle.ViewActivityLogLabel_autor}"/>
+                    <h:outputText value="#{activityLogController.selected.autor}" title="#{bundle.ViewActivityLogTitle_autor}"/>
+                    <h:outputText value="#{bundle.ViewActivityLogLabel_activity}"/>
+                    <h:outputText value="#{activityLogController.selected.activity}" title="#{bundle.ViewActivityLogTitle_activity}"/>
+                    <h:outputText value="#{bundle.ViewActivityLogLabel_dateActivity}"/>
+                    <h:outputText value="#{activityLogController.selected.dateActivity}" title="#{bundle.ViewActivityLogTitle_dateActivity}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewActivityLogLabel_hour}"/>
+                    <h:outputText value="#{activityLogController.selected.hour}" title="#{bundle.ViewActivityLogTitle_hour}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewActivityLogLabel_status}"/>
+                    <h:outputText value="#{activityLogController.selected.status}" title="#{bundle.ViewActivityLogTitle_status}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{activityLogController.destroyAndView}" value="#{bundle.ViewActivityLogDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewActivityLogEditLink}"/>
+                <br />
+                <h:commandLink action="#{activityLogController.prepareCreate}" value="#{bundle.ViewActivityLogCreateLink}" />
+                <br />
+                <h:commandLink action="#{activityLogController.prepareList}" value="#{bundle.ViewActivityLogShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewActivityLogIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
